@@ -35,7 +35,7 @@
                             <div class="my-carousel-images">
                                 
                                 <div class="my-carousel-item active">
-                                    <img @mouseover="resetPlay" @mouseleave="mouseLeaveplay" class="img-fluid" :src="images[slideCorrente].url " :alt="images[slideCorrente].url">
+                                    <img  @keyup.right.left="onKeyUp"  @mouseover="resetPlay" @mouseleave="mouseLeaveplay" class="img-fluid" :src="images[slideCorrente].url " :alt="images[slideCorrente].url">
                                     <div class="item-description px-3">
                                         <h2>{{ images[slideCorrente].title }}</h2>
                                         <p>{{ images[slideCorrente].description }}</p>

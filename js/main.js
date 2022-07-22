@@ -2,6 +2,7 @@ const app = new Vue ({
     el: '#app',
     data: {
         slideCorrente: 0,
+        key: '',
         images: [
             {
                 url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -55,6 +56,9 @@ const app = new Vue ({
         },
         resetPlay(){
             clearInterval(this.timer);
+        },
+        onKeyUp(event) {
+            this.key = event.key;
         }
     },
     created(){
