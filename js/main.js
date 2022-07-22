@@ -49,6 +49,12 @@ const app = new Vue ({
         },
         autoPlay(){
             this.next()
+        },
+        mouseLeaveplay(){
+            this.timer = setInterval(this.autoPlay,3000);  
+        },
+        resetPlay(){
+            clearInterval(this.timer);
         }
     },
     created(){

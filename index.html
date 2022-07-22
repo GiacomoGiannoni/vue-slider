@@ -35,7 +35,7 @@
                             <div class="my-carousel-images">
                                 
                                 <div class="my-carousel-item active">
-                                    <img class="img-fluid" :src="images[slideCorrente].url " :alt="images[slideCorrente].url">
+                                    <img @mouseover="resetPlay" @mouseleave="mouseLeaveplay" class="img-fluid" :src="images[slideCorrente].url " :alt="images[slideCorrente].url">
                                     <div class="item-description px-3">
                                         <h2>{{ images[slideCorrente].title }}</h2>
                                         <p>{{ images[slideCorrente].description }}</p>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="my-thumbnails position-relative">
     
-                                <div v-for="(image, indice) in images" :class="(slideCorrente==indice)?'active': ' ' " class="my-thumbnail">
+                                <div v-for="(image, indice) in images" :class="(slideCorrente == indice)?'active': ' ' " class="my-thumbnail">
                                     <img class="img-fluid" :src="image.url" :alt=" 'Thumbnail of '+image.title+' picture' ">
                                 </div>
     
