@@ -46,6 +46,12 @@ const app = new Vue ({
             }else {
                 this.slideCorrente --;
             }
+        },
+        autoPlay(){
+            this.next()
         }
-    }
+    },
+    created(){
+        setInterval(this.autoPlay,3000);
+    },
 })
