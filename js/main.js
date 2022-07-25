@@ -2,7 +2,7 @@ const app = new Vue ({
     el: '#app',
     data: {
         slideCorrente: 0,
-        key: '',
+        clock: null,
         images: [
             {
                 url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -42,26 +42,36 @@ const app = new Vue ({
             }
         },
         prev() {
-            if (this.slideCorrente = 0) {
+            if (this.slideCorrente == 0) {
                 this.slideCorrente = this.images.length -1;            
             }else {
                 this.slideCorrente --;
             }
         },
-        autoPlay(){
-            this.next()
+        getThumbActive(image) {
+            if (image == this.slideCorrente) {
+                return 'active';
+            } else {
+                return '';
+            }
         },
-        mouseLeaveplay(){
-            this.timer = setInterval(this.autoPlay,3000);  
+        setSlideCorrente(indice) {
+            this.slideCorrente = indice;
         },
-        resetPlay(){
-            clearInterval(this.timer);
+        autoPlay() {
+            this.clock = setInterval(
+                () => {
+                    this.next();
+                }
+            , 3000);
         },
-        onKeyUp(event) {
-            this.key = event.key;
-        }
+        resetPlay() {
+            clearInterval(this.clock);
+            this.clock = null;
+        },
     },
-    created(){
-        setInterval(this.autoPlay,3000);
+    created() {
+        this.autoPlay();
     },
-})
+    }
+);

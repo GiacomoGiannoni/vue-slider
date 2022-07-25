@@ -31,11 +31,11 @@
                     </div>
     
                     <div class="col-12 p-5">
-                        <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
+                        <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel" @mouseenter="resetPlay" @mouseleave="autoPlay" @keyup.right="next" @keyup.left="prev" tabindex="0">
                             <div class="my-carousel-images">
                                 
                                 <div class="my-carousel-item active">
-                                    <img  @keyup.right.left="onKeyUp"  @mouseover="resetPlay" @mouseleave="mouseLeaveplay" class="img-fluid" :src="images[slideCorrente].url " :alt="images[slideCorrente].url">
+                                    <img class="img-fluid" :src="images[slideCorrente].url " :alt="images[slideCorrente].url">
                                     <div class="item-description px-3">
                                         <h2>{{ images[slideCorrente].title }}</h2>
                                         <p>{{ images[slideCorrente].description }}</p>
@@ -46,7 +46,7 @@
                             </div>
                             <div class="my-thumbnails position-relative">
     
-                                <div v-for="(image, indice) in images" :class="(slideCorrente == indice)?'active': ' ' " class="my-thumbnail">
+                                <div v-for="(image, indice) in images" :class="getThumbActive(indice)" class="my-thumbnail" @click="setSlideCorrente(indice)">
                                     <img class="img-fluid" :src="image.url" :alt=" 'Thumbnail of '+image.title+' picture' ">
                                 </div>
     
